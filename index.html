@@ -1,0 +1,1242 @@
+# Kode Lengkap Website Kos-Kosan Winda
+
+Buat file bernama `index.html`, lalu salin seluruh kode di bawah ini.
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kos-Kosan Winda | Hunian Nyaman</title>
+
+<style>
+:root {
+    --ungu: #7957d5;
+    --pink: #d946ef;
+    --biru: #3b82f6;
+    --gelap: #29245b;
+    --terang: #f8f6ff;
+    --putih: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--terang);
+    color: var(--gelap);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+.topbar {
+    background: linear-gradient(90deg, var(--ungu), var(--pink));
+    color: white;
+    text-align: center;
+    padding: 9px 15px;
+    font-size: 13px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,.96);
+    box-shadow: 0 4px 20px #29245b12;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: auto;
+    padding: 15px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--ungu);
+}
+
+.logo span {
+    color: var(--pink);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+nav a {
+    font-size: 14px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--pink);
+}
+
+.menu-btn {
+    display: none;
+    border: 0;
+    background: var(--terang);
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(100deg, var(--ungu), var(--pink));
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+    box-shadow: 0 6px 18px #7957d533;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px #7957d555;
+}
+
+.btn-outline {
+    background: white;
+    color: var(--ungu);
+    border: 1px solid var(--ungu);
+    box-shadow: none;
+}
+
+.container {
+    width: min(1120px, 92%);
+    margin: auto;
+}
+
+.hero {
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    background:
+      linear-gradient(90deg, rgba(248,246,255,.98) 0%,
+      rgba(248,246,255,.91) 42%, rgba(248,246,255,.12) 100%),
+      url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1800&q=85")
+      center/cover;
+}
+
+.hero-content {
+    max-width: 570px;
+    padding: 70px 0;
+    animation: masuk 1s ease;
+}
+
+.pill {
+    display: inline-block;
+    background: #e9ddff;
+    color: var(--ungu);
+    padding: 6px 13px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+h1 {
+    font-size: clamp(34px, 5vw, 53px);
+    line-height: 1.13;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    color: var(--ungu);
+}
+
+.hero p {
+    margin-bottom: 25px;
+    color: #575576;
+    max-width: 480px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.section {
+    padding: 70px 0;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 35px;
+}
+
+.section-heading h2 {
+    font-size: clamp(27px, 4vw, 36px);
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.section-heading p {
+    color: #74718c;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px #29245b18;
+}
+
+.about-text h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.about-text p {
+    color: #74718c;
+    margin-bottom: 18px;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.stat {
+    flex: 1;
+    min-width: 100px;
+    background: white;
+    padding: 16px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 18px #29245b0c;
+}
+
+.stat strong {
+    display: block;
+    color: var(--ungu);
+    font-size: 21px;
+}
+
+.facilities {
+    background: linear-gradient(135deg, #eee8ff, #fff1f7);
+}
+
+.facility-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.facility {
+    background: white;
+    padding: 25px 12px;
+    border-radius: 18px;
+    text-align: center;
+    border: 1px solid #eee5ff;
+    transition: .3s;
+}
+
+.facility:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 12px 25px #7957d522;
+}
+
+.facility .emoji {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.facility h3 {
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.facility p {
+    font-size: 12px;
+    color: #77738e;
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.room-card {
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid #ece7fa;
+    box-shadow: 0 8px 25px #29245b0b;
+    transition: .35s;
+}
+
+.room-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px #7957d522;
+}
+
+.room-photo {
+    position: relative;
+    overflow: hidden;
+    height: 260px;
+    background: #e8e4f3;
+}
+
+.room-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s;
+}
+
+.room-card:hover .room-photo img {
+    transform: scale(1.05);
+}
+
+.room-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--ungu);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.room-content {
+    padding: 23px;
+}
+
+.room-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.room-title h3 {
+    font-size: 23px;
+}
+
+.price {
+    text-align: right;
+    color: var(--ungu);
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.price small {
+    display: block;
+    font-size: 11px;
+    color: #88839e;
+    font-weight: normal;
+}
+
+.room-description {
+    color: #77738e;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.room-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 18px 0 22px;
+}
+
+.room-features span {
+    background: #f6f2ff;
+    padding: 9px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.room-card .btn {
+    width: 100%;
+    text-align: center;
+}
+
+.booking {
+    background: linear-gradient(135deg, #f0eaff, #fff0f6);
+}
+
+.booking-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 35px;
+    align-items: start;
+}
+
+.booking-info {
+    padding: 25px 0;
+}
+
+.booking-info h2 {
+    font-size: 34px;
+    line-height: 1.25;
+    margin-bottom: 15px;
+}
+
+.booking-info p {
+    color: #74718c;
+    margin-bottom: 18px;
+}
+
+.info-item {
+    display: flex;
+    gap: 12px;
+    background: #ffffffbd;
+    border-radius: 13px;
+    padding: 14px;
+    margin-top: 12px;
+}
+
+.info-item span {
+    font-size: 23px;
+}
+
+.form-card {
+    background: white;
+    padding: 28px;
+    border-radius: 23px;
+    box-shadow: 0 12px 35px #29245b12;
+}
+
+.form-card h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px 13px;
+    border: 1px solid #e3deef;
+    border-radius: 10px;
+    outline: none;
+    background: #fdfcff;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--ungu);
+    box-shadow: 0 0 0 3px #7957d51a;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 90px;
+}
+
+.form-card .btn {
+    width: 100%;
+}
+
+.receipt {
+    display: none;
+    background: white;
+    border: 2px dashed var(--ungu);
+    border-radius: 18px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.receipt h3 {
+    text-align: center;
+    color: var(--ungu);
+    font-size: 25px;
+}
+
+.receipt-subtitle {
+    text-align: center;
+    color: #77738e;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.receipt-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 9px 0;
+    border-bottom: 1px solid #eeeaf7;
+    font-size: 14px;
+}
+
+.receipt-row strong {
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+.receipt-total {
+    font-size: 18px;
+    color: var(--ungu);
+    font-weight: bold;
+}
+
+.receipt-note {
+    font-size: 12px;
+    color: #77738e;
+    margin-top: 15px;
+}
+
+.receipt-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.receipt-actions button {
+    flex: 1;
+}
+
+footer {
+    background: #29245b;
+    color: white;
+    padding: 35px 0;
+    text-align: center;
+}
+
+footer p {
+    font-size: 13px;
+    color: #d5d0ed;
+    margin-top: 7px;
+}
+
+.footer-logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.footer-logo span {
+    color: #e879f9;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #29245b;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px #0002;
+    z-index: 200;
+    display: none;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes masuk {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .facility-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .booking-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        flex-wrap: wrap;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+        padding: 12px;
+        border-top: 1px solid #eeeaf7;
+        font-size: 14px;
+    }
+
+    .navbar > .nav-cta {
+        display: none;
+    }
+
+    .hero {
+        background:
+          linear-gradient(90deg, rgba(248,246,255,.96),
+          rgba(248,246,255,.72)),
+          url("https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1000&q=80")
+          center/cover;
+    }
+
+    .hero-content {
+        padding: 55px 0;
+    }
+
+    .about-grid, .rooms-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        height: 250px;
+    }
+
+    .facility-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section {
+        padding: 50px 0;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .form-group.full {
+        grid-column: auto;
+    }
+
+    .room-photo {
+        height: 230px;
+    }
+
+    .room-title h3 {
+        font-size: 20px;
+    }
+
+    .room-content, .form-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 380px) {
+    .room-features {
+        grid-template-columns: 1fr;
+    }
+
+    .room-title {
+        flex-direction: column;
+    }
+
+    .price {
+        text-align: left;
+    }
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #receipt, #receipt * {
+        visibility: visible;
+    }
+
+    #receipt {
+        display: block !important;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        color: black;
+    }
+
+    .receipt-actions {
+        display: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+    🏡 Hunian nyaman untuk mahasiswa dan pekerja — Selamat datang di Kos Winda!
+</div>
+
+<header>
+    <div class="navbar">
+        <a class="logo" href="#beranda">⌂ KOS-KOSAN <span>WINDA</span></a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰ Menu</button>
+
+        <nav id="navMenu">
+            <a href="#beranda">Beranda</a>
+            <a href="#tentang">Tentang</a>
+            <a href="#fasilitas">Fasilitas</a>
+            <a href="#kamar">Pilihan Kamar</a>
+            <a href="#pesan">Pemesanan</a>
+        </nav>
+
+        <a href="#pesan" class="btn nav-cta">Pesan Kamar →</a>
+    </div>
+</header>
+
+<main>
+<section class="hero" id="beranda">
+    <div class="container">
+        <div class="hero-content">
+            <span class="pill">🏠 TEMPAT TINGGAL YANG TERASA SEPERTI RUMAH</span>
+            <h1>Temukan tempat nyaman untuk <span class="highlight">cerita barumu.</span></h1>
+            <p>
+                Kos-Kosan Winda hadir dengan suasana hangat untuk
+                menemani aktivitas, belajar, dan beristirahat setiap hari.
+            </p>
+            <div class="hero-buttons">
+                <a href="#kamar" class="btn">Lihat Pilihan Kamar →</a>
+                <a href="#tentang" class="btn btn-outline">Kenali Kos Winda</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="tentang">
+    <div class="container about-grid reveal">
+        <img
+            class="about-image"
+            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85"
+            alt="Inspirasi interior tempat tinggal yang nyaman"
+            loading="lazy"
+        >
+
+        <div class="about-text">
+            <span class="pill">KENALAN DULU, YUK!</span>
+            <h2>Bukan cuma tempat tidur, ini <span class="highlight">tempat pulang.</span></h2>
+            <p>
+                Kos-Kosan Winda dirancang untuk menjadi tempat tinggal
+                yang nyaman dan bersahabat. Kamu bisa melihat pilihan
+                kamar, memeriksa fasilitas, lalu mengirim permintaan
+                pemesanan melalui website ini.
+            </p>
+            <a href="#fasilitas" class="btn">Lihat Fasilitas →</a>
+
+            <div class="stats">
+                <div class="stat">
+                    <strong>2</strong>
+                    <span>Pilihan Kamar</span>
+                </div>
+                <div class="stat">
+                    <strong>5</strong>
+                    <span>Fasilitas Kamar</span>
+                </div>
+                <div class="stat">
+                    <strong>1</strong>
+                    <span>Langkah Pemesanan</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section facilities" id="fasilitas">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="pill">FASILITAS KOS</span>
+            <h2>Fasilitas untuk <span class="highlight">keseharianmu.</span></h2>
+            <p>
+                Kebutuhan sederhana yang membantu aktivitas harian terasa lebih nyaman.
+                Periksa fasilitas kamar yang kamu pilih.
+            </p>
+        </div>
+
+        <div class="facility-grid">
+            <div class="facility reveal">
+                <div class="emoji">🛏️</div>
+                <h3>Tempat Tidur</h3>
+                <p>Untuk beristirahat dengan nyaman.</p>
+            </div>
+
+            <div class="facility reveal">
+                <div class="emoji">👔</div>
+                <h3>Lemari Pakaian</h3>
+                <p>Menyimpan pakaian dan barang.</p>
+            </div>
+
+            <div class="facility reveal">
+                <div class="emoji">🌬️</div>
+                <h3>Kipas / AC</h3>
+                <p>Pilih sesuai kebutuhanmu.</p>
+            </div>
+
+            <div class="facility reveal">
+                <div class="emoji">📚</div>
+                <h3>Meja Belajar</h3>
+                <p>Untuk belajar dan bekerja.</p>
+            </div>
+
+            <div class="facility reveal">
+                <div class="emoji">🚰</div>
+                <h3>Wastafel</h3>
+                <p>Untuk kebutuhan sehari-hari.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="kamar">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="pill">PILIHAN KAMAR</span>
+            <h2>Kamar yang pas, <span class="highlight">langkah baru dimulai.</span></h2>
+            <p>Pilih kamar kipas atau kamar AC sesuai kebutuhan dan anggaranmu.</p>
+        </div>
+
+        <div class="rooms-grid">
+
+            <!-- KAMAR KIPAS -->
+            <article class="room-card reveal">
+                <div class="room-photo">
+                    <img
+                        src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=1000&q=85"
+                        alt="Inspirasi interior kamar tidur dengan kipas angin"
+                        loading="lazy"
+                    >
+                    <span class="room-label">TIPE A</span>
+                </div>
+
+                <div class="room-content">
+                    <div class="room-title">
+                        <h3>Kamar Kipas</h3>
+                        <div class="price">
+                            Rp500.000
+                            <small>/ bulan</small>
+                        </div>
+                    </div>
+
+                    <p class="room-description">
+                        Pilihan kamar sederhana untuk beristirahat,
+                        belajar, dan menjalani aktivitas sehari-hari.
+                    </p>
+
+                    <div class="room-features">
+                        <span>🛏️ Tempat tidur</span>
+                        <span>👔 Lemari pakaian</span>
+                        <span>🌬️ Kipas angin</span>
+                        <span>📚 Meja belajar</span>
+                        <span>🚰 Wastafel</span>
+                    </div>
+
+                    <button class="btn choose-room" data-room="Kamar Kipas">
+                        Pilih Kamar Kipas →
+                    </button>
+                </div>
+            </article>
+
+            <!-- KAMAR AC -->
+            <article class="room-card reveal">
+                <div class="room-photo">
+                    <img
+                        src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1000&q=85"
+                        alt="Inspirasi interior kamar tidur ber-AC"
+                        loading="lazy"
+                    >
+                    <span class="room-label">TIPE B</span>
+                </div>
+
+                <div class="room-content">
+                    <div class="room-title">
+                        <h3>Kamar AC</h3>
+                        <div class="price">
+                            Rp800.000
+                            <small>/ bulan</small>
+                        </div>
+                    </div>
+
+                    <p class="room-description">
+                        Pilihan kamar dengan pendingin ruangan untuk
+                        menunjang kenyamanan saat beristirahat.
+                    </p>
+
+                    <div class="room-features">
+                        <span>🛏️ Tempat tidur</span>
+                        <span>👔 Lemari pakaian</span>
+                        <span>❄️ AC</span>
+                        <span>📚 Meja belajar</span>
+                        <span>🚰 Wastafel</span>
+                    </div>
+
+                    <button class="btn choose-room" data-room="Kamar AC">
+                        Pilih Kamar AC →
+                    </button>
+                </div>
+            </article>
+
+        </div>
+
+        <p style="text-align:center;color:#77738e;font-size:12px;margin-top:20px">
+            Catatan: harga dan fasilitas di atas adalah contoh untuk tugas website.
+            Sesuaikan dengan kondisi kos yang sebenarnya.
+        </p>
+    </div>
+</section>
+
+<section class="section booking" id="pesan">
+    <div class="container booking-grid">
+        <div class="booking-info reveal">
+            <span class="pill">PEMESANAN KAMAR</span>
+            <h2>Selangkah lagi menuju <span class="highlight">kamar pilihanmu.</span></h2>
+            <p>
+                Isi formulir pemesanan dengan data yang benar.
+                Setelah dikirim, website akan menampilkan ringkasan
+                pemesanan yang bisa dicetak.
+            </p>
+
+            <div class="info-item">
+                <span>📝</span>
+                <div>
+                    <strong>Isi data pemesan</strong>
+                    <p>Masukkan nama dan nomor telepon.</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span>🏡</span>
+                <div>
+                    <strong>Pilih tipe kamar</strong>
+                    <p>Tentukan kamar dan lama sewa.</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <span>🧾</span>
+                <div>
+                    <strong>Lihat ringkasan</strong>
+                    <p>Periksa perkiraan biaya pemesanan.</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <form class="form-card" id="bookingForm">
+                <h3>📋 Formulir Pemesanan</h3>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nama">Nama lengkap</label>
+                        <input type="text" id="nama" name="nama"
+                               placeholder="Masukkan nama" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telepon">Nomor telepon</label>
+                        <input type="tel" id="telepon" name="telepon"
+                               placeholder="Masukkan nomor telepon" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="tipeKamar">Pilihan kamar</label>
+                        <select id="tipeKamar" name="tipeKamar" required>
+                            <option value="">Pilih tipe kamar</option>
+                            <option value="Kamar Kipas">Kamar Kipas - Rp500.000/bulan</option>
+                            <option value="Kamar AC">Kamar AC - Rp800.000/bulan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="durasi">Lama sewa</label>
+                        <select id="durasi" name="durasi" required>
+                            <option value="1">1 bulan</option>
+                            <option value="3">3 bulan</option>
+                            <option value="6">6 bulan</option>
+                            <option value="12">12 bulan</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tanggal">Rencana masuk</label>
+                        <input type="date" id="tanggal" name="tanggal" required>
+                    </div>
+
+                    <div class="form-group full">
+                        <label for="catatan">Catatan tambahan (opsional)</label>
+                        <textarea id="catatan" name="catatan"
+                                  placeholder="Contoh: ingin bertanya tentang ketersediaan kamar"></textarea>
+                    </div>
+                </div>
+
+                <button class="btn" type="submit">Kirim Pemesanan & Lihat Struk →</button>
+            </form>
+
+            <div class="receipt" id="receipt" aria-live="polite">
+                <h3>🏡 KOS-KOSAN WINDA</h3>
+                <p class="receipt-subtitle">RINGKASAN PEMESANAN KAMAR</p>
+
+                <div id="receiptDetails"></div>
+
+                <p class="receipt-note">
+                    Ini adalah ringkasan permintaan pemesanan, bukan bukti pembayaran.
+                    Pemesanan dan ketersediaan kamar perlu dikonfirmasi oleh pengelola.
+                </p>
+
+                <div class="receipt-actions">
+                    <button type="button" class="btn" id="printReceipt">🖨️ Cetak</button>
+                    <button type="button" class="btn btn-outline" id="editReceipt">Ubah Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-logo">⌂ KOS-KOSAN <span>WINDA</span></div>
+        <p>Hunian nyaman untuk menemani langkah dan cerita barumu.</p>
+        <p>© <span id="tahun"></span> Kos-Kosan Winda. Website demonstrasi.</p>
+    </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const menuBtn = document.getElementById("menuBtn");
+const navMenu = document.getElementById("navMenu");
+
+menuBtn.addEventListener("click", function () {
+    navMenu.classList.toggle("open");
+});
+
+navMenu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+        navMenu.classList.remove("open");
+    });
+});
+
+const hargaKamar = {
+    "Kamar Kipas": 500000,
+    "Kamar AC": 800000
+};
+
+const tipeKamar = document.getElementById("tipeKamar");
+const durasi = document.getElementById("durasi");
+const bookingForm = document.getElementById("bookingForm");
+const receipt = document.getElementById("receipt");
+const receiptDetails = document.getElementById("receiptDetails");
+const toast = document.getElementById("toast");
+
+function formatRupiah(angka) {
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0
+    }).format(angka);
+}
+
+document.querySelectorAll(".choose-room").forEach(function (button) {
+    button.addEventListener("click", function () {
+        tipeKamar.value = button.dataset.room;
+        document.getElementById("pesan").scrollIntoView({
+            behavior: "smooth"
+        });
+        tampilToast(button.dataset.room + " berhasil dipilih. Silakan isi formulir.");
+    });
+});
+
+function tambahBaris(label, value, className = "") {
+    const row = document.createElement("div");
+    row.className = "receipt-row " + className;
+
+    const labelElement = document.createElement("span");
+    labelElement.textContent = label;
+
+    const valueElement = document.createElement("strong");
+    valueElement.textContent = value;
+
+    row.append(labelElement, valueElement);
+    receiptDetails.appendChild(row);
+}
+
+bookingForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const nama = document.getElementById("nama").value.trim();
+    const telepon = document.getElementById("telepon").value.trim();
+    const kamar = tipeKamar.value;
+    const jumlahBulan = Number(durasi.value);
+    const tanggal = document.getElementById("tanggal").value;
+    const catatan = document.getElementById("catatan").value.trim();
+
+    if (!nama || !telepon || !kamar || !tanggal) {
+        tampilToast("Mohon lengkapi semua data wajib.");
+        return;
+    }
+
+    const hargaBulanan = hargaKamar[kamar];
+
+    if (!hargaBulanan) {
+        tampilToast("Silakan pilih tipe kamar yang tersedia.");
+        return;
+    }
+
+    const total = hargaBulanan * jumlahBulan;
+
+    receiptDetails.replaceChildren();
+
+    tambahBaris("Nama pemesan", nama);
+    tambahBaris("Nomor telepon", telepon);
+    tambahBaris("Tipe kamar", kamar);
+    tambahBaris("Harga per bulan", formatRupiah(hargaBulanan));
+    tambahBaris("Lama sewa", jumlahBulan + " bulan");
+    tambahBaris("Rencana masuk", tanggal);
+    tambahBaris("Perkiraan total sewa", formatRupiah(total), "receipt-total");
+    tambahBaris("Catatan", catatan || "-");
+
+    receipt.style.display = "block";
+    receipt.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    tampilToast("Ringkasan pemesanan berhasil dibuat!");
+});
+
+document.getElementById("printReceipt").addEventListener("click", function () {
+    window.print();
+});
+
+document.getElementById("editReceipt").addEventListener("click", function () {
+    receipt.style.display = "none";
+    document.getElementById("pesan").scrollIntoView({ behavior: "smooth" });
+});
+
+function tampilToast(pesan) {
+    toast.textContent = pesan;
+    toast.style.display = "block";
+
+    if (tampilToast.timeout) {
+        clearTimeout(tampilToast.timeout);
+    }
+
+    tampilToast.timeout = setTimeout(function () {
+        toast.style.display = "none";
+    }, 3000);
+}
+
+document.getElementById("tahun").textContent = new Date().getFullYear();
+
+const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(function (element) {
+    observer.observe(element);
+});
+</script>
+
+</body>
+</html>
+```
+
+---
+
+## Cara menjalankannya di VS Code
+
+1. Buat folder bernama `Kos-Kosan-Winda`.
+2. Buka folder tersebut di VS Code.
+3. Buat file baru bernama `index.html`.
+4. Salin semua kode di atas dan simpan dengan menekan **Ctrl + S**.
+5. Klik kanan file `index.html`, lalu pilih **Open with Live Server**. Jika Live Server belum tersedia, buka file tersebut langsung melalui browser.
+
+**Fitur yang sudah ada:**
+- Foto bangunan dan foto kamar pada halaman website.
+- Kamar Kipas Rp500.000/bulan dan Kamar AC Rp800.000/bulan.
+- Fasilitas tempat tidur, lemari, kipas/AC, meja belajar, dan wastafel.
+- Tombol pilih kamar yang mengisi pilihan pada formulir secara otomatis.
+- Perhitungan perkiraan total sewa sesuai lama sewa.
+- Struk ringkasan pemesanan yang bisa dicetak.
+- Tampilan responsif untuk HP dan komputer, serta animasi.
+
+**Penting:** foto menggunakan tautan online sehingga perlu internet. Foto tersebut merupakan gambar referensi, bukan foto terverifikasi dari kos sebenarnya. Harga juga masih contoh dan dapat kamu ubah sesuai kebutuhan tugas. Formulir ini belum menyimpan data ke database atau mengirim pesanan ke pengelola.
